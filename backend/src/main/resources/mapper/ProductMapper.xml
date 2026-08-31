@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.lumina.mapper.ProductMapper">
+    <select id="selectPageWithConditions" resultType="com.lumina.vo.ProductVO">
+        SELECT p.*, c.name AS categoryName
+        FROM l_product p
+        LEFT JOIN l_category c ON p.category_id = c.id
+        <where>
+            p.status = 1
+            <if test="query.categoryId != null">
+                AND p.category_id = #{query.categoryId}
+            </if>
+            <if test="query.keyword != null and query.keyword != ''">
+                AND p.name LIKE CONCAT('%', #{query.keyword}, '%')
+            </if>
+        </where>
+        <choose>
+            <when test="query.sort == 'price_asc'">ORDER BY p.price ASC</when>
+            <when test="query.sort == 'price_desc'">ORDER BY p.price DESC</when>
+            <when test="query.sort == 'sales_desc'">ORDER BY p.sales DESC</when>
+            <when test="query.sort == 'newest'">ORDER BY p.create_time DESC</when>
+            <otherwise>ORDER BY p.sort_order ASC, p.create_time DESC</otherwise>
+        </choose>
+    </select>
+</mapper>

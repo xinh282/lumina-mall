@@ -1,0 +1,49 @@
+:root {
+  --el-color-primary: #c9a96e;
+  --el-color-primary-light-3: #d4bc8b;
+  --el-color-primary-light-5: #dfd0a8;
+  --el-color-primary-dark-2: #b8944f;
+  --el-font-family: var(--font-serif);
+  --el-border-radius-base: var(--radius-sm);
+}
+
+.el-button--primary {
+  --el-button-bg-color: var(--primary);
+  --el-button-border-color: var(--primary);
+  --el-button-hover-bg-color: #1a1a1a;
+  --el-button-hover-border-color: #1a1a1a;
+}
+
+.el-menu--horizontal {
+  border-bottom: none !important;
+}
+
+.el-card {
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow var(--transition), transform var(--transition);
+}
+
+.el-card:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.el-dialog {
+  border-radius: var(--radius-lg);
+}
+
+.el-input__wrapper {
+  border-radius: var(--radius-sm);
+}
+
+.el-tag {
+  border-radius: 4px;
+}
+
+.el-badge__content {
+  font-family: var(--font-serif);
+}
+
+.el-message {
+  font-family: var(--font-serif);
+}
